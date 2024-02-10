@@ -8,13 +8,12 @@ export default function Preview() {
         const response  = await addOnUISdk.app.document.createRenditions({
                 range:"currentPage",
                 format:"image/jpeg",
-        })   
+        }, addOnUISdk.constants.RenditionIntent.preview)   
         return URL.createObjectURL(response[0].blob)
     }
     async function loadImage() {
         const imageURL = await getCanvas()
         setImage(imageURL)
-        console.log(image)
     }
     useEffect(() => {
         loadImage()
