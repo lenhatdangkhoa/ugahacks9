@@ -9,6 +9,7 @@ import { Button } from "@swc-react/button";
 import { Theme } from "@swc-react/theme";
 import React, { useState } from "react";
 import "./App.css";
+import Preview from "./Preview.jsx"
 
 const App = ({ addOnUISdk }) => {
     const [buttonLabel, setButtonLabel] = useState("Click me");
@@ -27,6 +28,8 @@ const App = ({ addOnUISdk }) => {
                 </Button>
                 Hello World
             </div>
+            <div class="test">Hello Test</div>
+            <Preview/>
         </Theme>
     );
 };
