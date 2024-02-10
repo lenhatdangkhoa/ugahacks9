@@ -29,7 +29,7 @@ The user can also adjust the size of the text
     ctx.fillStyle = "black";
     let size = textSize.toString();
     ctx.font = size + "px Arial";
-    ctx.fillText("hi", 10, 50);
+    ctx.fillText(watermark, 10, 50);
   }
 
   async function handleAddToPage() {
