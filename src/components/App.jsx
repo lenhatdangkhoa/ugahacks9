@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Theme } from "@swc-react/theme";
 import { Slider } from "antd";
 import "@spectrum-web-components/theme/express/scale-medium.js";
@@ -7,6 +7,8 @@ import Preview from "./Preview.jsx";
 import UploadButton from "./UploadButton";
 import "./bulma.min.css";
 import "./App.css";
+import { Button } from "@swc-react/button";
+
 const App = ({ addOnUISdk }) => {
   /* 
 This application generates a watermark template
@@ -17,27 +19,25 @@ The user can also adjust the size of the text
   const [watermark, setWatermark] = useState("");
   const [textSize, setTextSize] = useState(12);
   const [image, setImage] = useState(null);
+  const watermarkCanvas = useRef(null);
 
-  useEffect(() => {
-    createWatermark(watermark, textSize, image);
-  }, [watermark]);
-
-  function createWatermark(watermark, textSize, image) {
-    return {
-      watermark,
-      textSize,
-      image,
-    };
+  function generateWatermark() {
+    const ctx = watermarkCanvas.current.getContext("2d");
+    watermarkCanvas.current.width = 300;
+    watermarkCanvas.current.height = 360;
+    ctx.fillStyle = "black";
+    ctx.font = "30px Arial";
+    ctx.fillText("hi");
   }
-  async function getCanvas() {
-    const response = await addOnUISdk.app.document.createRenditions({
-      range: "currentPage",
-      format: "image/jpeg",
+
+  async function handleAddToPage() {
+    const blob = await new Promise((resolve, reject) => {
+      watermarkCanvas.current.toBlob((blob) => {
+        resolve(blob);
+      });
     });
-    return URL.createObjectURL(response[0].blob);
+    addOnUISdk.app.document.addImage(blob);
   }
-  let text = new TextNode(watermark);
-
   return (
     <Theme theme="express" scale="medium" color="light">
       <div className="container">
@@ -68,6 +68,12 @@ The user can also adjust the size of the text
           <UploadButton />
         </div>
         <Preview />
+        <div>
+          <Button onClick={handleAddToPage}>Generate</Button>
+        </div>
+        <div>
+          <canvas ref={watermarkCanvas} />
+        </div>
       </div>
     </Theme>
   );
