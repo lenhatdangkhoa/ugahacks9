@@ -2,16 +2,15 @@
 // import these spectrum web components modules:
 import "@spectrum-web-components/theme/express/scale-medium.js";
 import "@spectrum-web-components/theme/express/theme-light.js";
-
+import React, { useState } from 'react';
 // To learn more about using "swc-react" visit:
 // https://opensource.adobe.com/spectrum-web-components/using-swc-react/
 import { Button } from "@swc-react/button";
 import { Theme } from "@swc-react/theme";
-import React, { useState } from "react";
-import "./App.css";
+import "./bulma.min.css";
 
 const App = ({ addOnUISdk }) => {
-    const [buttonLabel, setButtonLabel] = useState("Click me");
+    const [watermark, setWatermark] = useState("");
 
     function handleClick() {
         setButtonLabel("Clicked");
@@ -22,10 +21,16 @@ const App = ({ addOnUISdk }) => {
         // You may use "addOnUISdk.app.ui.theme" to get the current theme and react accordingly.
         <Theme theme="express" scale="medium" color="light">
             <div className="container">
-                <Button size="m" onClick={handleClick}>
-                    {buttonLabel}
-                </Button>
-                Hello World
+        <h1> Watermark Name </h1>
+        <input type="text"
+          placeholder="Name"
+          value = {watermark}
+          onChange={({ target : {value : e}}) => {
+            setWatermark(e);
+          }}
+        />
+        <h1> Test </h1>
+        <div>{watermark}</div>
             </div>
         </Theme>
     );
