@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Theme } from "@swc-react/theme";
 import { Slider } from "antd";
 import "@spectrum-web-components/theme/express/scale-medium.js";
@@ -8,7 +8,7 @@ import UploadButton from "./UploadButton";
 import "./bulma.min.css";
 import "./App.css";
 const App = ({ addOnUISdk }) => {
-/* 
+  /* 
 This application generates a watermark template
  according to the user's input.
 taking in a text and image parameter. 
@@ -16,6 +16,27 @@ The user can also adjust the size of the text
  */
   const [watermark, setWatermark] = useState("");
   const [textSize, setTextSize] = useState(12);
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    createWatermark(watermark, textSize, image);
+  }, [watermark]);
+
+  function createWatermark(watermark, textSize, image) {
+    return {
+      watermark,
+      textSize,
+      image,
+    };
+  }
+  async function getCanvas() {
+    const response = await addOnUISdk.app.document.createRenditions({
+      range: "currentPage",
+      format: "image/jpeg",
+    });
+    return URL.createObjectURL(response[0].blob);
+  }
+  let text = new TextNode(watermark);
 
   return (
     <Theme theme="express" scale="medium" color="light">
