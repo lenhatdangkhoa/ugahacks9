@@ -1,0 +1,21 @@
+{
+    "testId": "1eccc11c-3bc6-41d0-b519-f31bed21ff7f",
+    "name": "Hacks9",
+    "version": "1.0.0",
+    "manifestVersion": 2,
+    "requirements": {
+        "apps": [
+            {
+                "name": "Express",
+                "apiVersion": 1
+            }
+        ]
+    },
+    "entryPoints": [
+        {
+            "type": "panel",
+            "id": "panel1",
+            "main": "index.html"
+        }
+    ]
+}
