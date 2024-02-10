@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 // https://opensource.adobe.com/spectrum-web-components/using-swc-react/
 import { Button } from "@swc-react/button";
 import { Theme } from "@swc-react/theme";
+import UploadButton from "./UploadButton";
 import "./bulma.min.css";
 
   import { Slider } from 'antd';
@@ -35,7 +36,10 @@ onChange={value => setTextSize(value)}
       open: true,
     }}
   />
-            </div>
+        <h1> Icon Img </h1>
+        <UploadButton/>
+        </div>
+        
         </Theme>
     );
 };
