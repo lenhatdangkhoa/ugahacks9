@@ -43,7 +43,7 @@ The user can also adjust the size of the text
           }}
         />
         <div>
-          <h1> Icon Img </h1>
+          <h1> Icon Upload </h1>
           <UploadButton />
         </div>
         <Preview />
