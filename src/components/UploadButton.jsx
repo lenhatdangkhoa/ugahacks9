@@ -2,6 +2,10 @@ import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Space, Upload } from 'antd';
 const App = () => (
+  /**
+   * Upload Image Button
+   * Limited to only one input
+   */
   <Space
     direction="vertical"
     style={{

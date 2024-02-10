@@ -3,6 +3,10 @@ import addOnUISdk from "https://new.express.adobe.com/static/add-on-sdk/sdk.js"
 import "./Preview.css"
 
 export default function Preview() {
+    /**
+     * Displays a preview of the watermark
+     * on the current image
+     */
     const [image, setImage] = useState(null)
     async function getCanvas () {
         const response  = await addOnUISdk.app.document.createRenditions({
