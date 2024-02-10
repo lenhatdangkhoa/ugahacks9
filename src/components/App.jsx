@@ -9,7 +9,6 @@ import { Button } from "@swc-react/button";
 import { Theme } from "@swc-react/theme";
 import UploadButton from "./UploadButton";
 import "./bulma.min.css";
-import React, { useState } from "react";
 import "./App.css";
 import Preview from "./Preview.jsx"
 
@@ -39,8 +38,15 @@ const App = ({ addOnUISdk }) => {
         open: true,
         }}
      />
+        <div>
         <h1> Icon Img </h1>
-        
+        <UploadButton/>
+        <Button size="m" onClick={handleClick}>
+                    {buttonLabel}
+                </Button>
+                Hello World
+            </div>
+            <div class="test">Hello Test</div>
             <Preview/>
         </div>
         
