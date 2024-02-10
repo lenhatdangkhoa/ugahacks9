@@ -8,13 +8,10 @@ import React, { useState } from 'react';
 import { Button } from "@swc-react/button";
 import { Theme } from "@swc-react/theme";
 import "./bulma.min.css";
-
+import { NumberInput, Slider } from '@mantine/core';
 const App = ({ addOnUISdk }) => {
     const [watermark, setWatermark] = useState("");
-
-    function handleClick() {
-        setButtonLabel("Clicked");
-    }
+  const [textSize, setTextSize] = useState(1);
 
     return (
         // Please note that the below "<Theme>" component does not react to theme changes in Express.
@@ -29,8 +26,26 @@ const App = ({ addOnUISdk }) => {
             setWatermark(e);
           }}
         />
-        <h1> Test </h1>
         <div>{watermark}</div>
+
+        <NumberInput
+          value={textSize}
+          onChange{setTextSize}
+          label="Watermark Text Size"
+          step={1}
+          min={1}
+          max={100}
+          hideControls
+        />
+        <Slider
+          step={1}
+          min={1}
+          max={100}
+          value={textSize}
+          onChange={setTextSize}
+          size={2}
+
+        />
             </div>
         </Theme>
     );
