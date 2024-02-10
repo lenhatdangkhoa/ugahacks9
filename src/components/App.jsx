@@ -9,12 +9,10 @@ import { Button } from "@swc-react/button";
 import { Theme } from "@swc-react/theme";
 import "./bulma.min.css";
 
+  import { Slider } from 'antd';
 const App = ({ addOnUISdk }) => {
     const [watermark, setWatermark] = useState("");
-
-    function handleClick() {
-        setButtonLabel("Clicked");
-    }
+  const [textSize, setTextSize] = useState(12);
 
     return (
         // Please note that the below "<Theme>" component does not react to theme changes in Express.
@@ -29,8 +27,14 @@ const App = ({ addOnUISdk }) => {
             setWatermark(e);
           }}
         />
-        <h1> Test </h1>
         <div>{watermark}</div>
+        <Slider
+    defaultValue={textSize}
+onChange={value => setTextSize(value)}
+    tooltip={{
+      open: true,
+    }}
+  />
             </div>
         </Theme>
     );
