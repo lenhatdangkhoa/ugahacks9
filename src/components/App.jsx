@@ -41,9 +41,6 @@ const App = ({ addOnUISdk }) => {
         <div>
         <h1> Icon Img </h1>
         <UploadButton/>
-        <Button size="m" onClick={handleClick}>
-                    {buttonLabel}
-                </Button>
                 Hello World
             </div>
             <div class="test">Hello Test</div>
