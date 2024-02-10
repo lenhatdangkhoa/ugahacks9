@@ -26,8 +26,10 @@ The user can also adjust the size of the text
     watermarkCanvas.current.width = 300;
     watermarkCanvas.current.height = 360;
     ctx.fillStyle = "black";
-    ctx.font = "30px Arial";
-    ctx.fillText("hi");
+    ctx.fillStyle = "black";
+    let size = textSize.toString();
+    ctx.font = size + "px Arial";
+    ctx.fillText("hi", 10, 50);
   }
 
   async function handleAddToPage() {
@@ -69,7 +71,8 @@ The user can also adjust the size of the text
         </div>
         <Preview />
         <div>
-          <Button onClick={handleAddToPage}>Generate</Button>
+          <Button onClick={generateWatermark}>Generate</Button>
+          <Button onClick={handleAddToPage}>Add</Button>
         </div>
         <div>
           <canvas ref={watermarkCanvas} />
