@@ -1,8 +1,20 @@
 .container {
-    margin: 24px;
-    display: flex;
-    flex-direction: column;
+  margin: 28px;
+  display: flex;
+  flex-direction: column;
 }
-.test {
-    color: green;
+.container h1 {
+  margin-top: 10px;
+  font-size: large;
+}
+
+.text-slider {
+  display: flex;
+  flex-direction: row;
+}
+.text-slider h1 {
+  width: 100%;
+}
+.left {
+  text-align: right;
 }

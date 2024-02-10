@@ -20,10 +20,14 @@ export default function Preview() {
         loadImage()
     },[image])
     return (
-        <div> 
-            This is a preview
+        <div>
+            <h1>
+                This is a preview</h1> 
             <img src={image} alt="Preview" id="previewImg"/>
+            <div>
+
             <button onClick={(e) => loadImage()}>Change</button>
+            </div>
         </div>
 
     )
