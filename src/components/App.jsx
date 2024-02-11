@@ -61,7 +61,7 @@ const App = ({ addOnUISdk }) => {
       }
       imgCtx.drawImage(image, 0, 0, imgCanvas.width, imgCanvas.height);
       image.src = imgCanvas.toDataURL();
-      await new Promise((res) => setTimeout(res, 1));
+      await new Promise((res) => setTimeout(res, 100));
 
       let y = 0;
       for (let i = 0; i < 50; i++) {
