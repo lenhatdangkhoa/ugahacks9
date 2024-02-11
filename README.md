@@ -12,10 +12,16 @@
 <p align="center">
 Imagine protecting your content with a personalized watermark with the click of a button. Our Adobe Express add-on, Watermarker, generates and applies a watermark using your name and logo directly onto your current page. It doesn't matter if you're an amateur or professional. Watermarker will ensure that your content remains distinctly yours.
   <br>
-  <br>
- Add-on Coming Soon to Adobe Express.
-<h2></h2>
+     <p align="center">
+     Built With: HTML, CSS, React, JavaScript 
 </p>
+  <br>
+     
+<h3 align="center">
+     Coming Soon to Adobe Express.
+</h3>
 
-
-**Built with: HTML, CSS, React, JavaScript**
+</p>
+<br>
+<br>
+<br>
