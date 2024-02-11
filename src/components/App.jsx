@@ -17,7 +17,7 @@ const App = ({ addOnUISdk }) => {
   The user can also adjust the size of the text
    */
     const [watermark, setWatermark] = useState("");
-    const [textSize, setTextSize] = useState(12);
+    const [textSize, setTextSize] = useState(36);
     const [image, setImage] = useState(null);
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
@@ -76,6 +76,8 @@ const App = ({ addOnUISdk }) => {
                     tooltip={{
                         open: false,
                     }}
+                    min={36}
+                    max={150}
                 />
                 <div>
                     <h1> Icon Upload </h1>
