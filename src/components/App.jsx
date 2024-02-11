@@ -62,12 +62,13 @@ const App = ({ addOnUISdk }) => {
             await new Promise(res => setTimeout(res, 0))
 
             let y = 0
+            const textWidth = ctx.measureText(watermark).width
             for (let i = 0; i < 50; i++) {
                 let x = -width / 2
                 let margin = 50;
                 for (let j = 0; j < 50; j++) {
                     ctx.fillText(watermark, x, y + image.height / 2 + textSize / 2)
-                    x += textSize * watermark.length / 1.5
+                    x += textWidth + margin
                     ctx.drawImage(image, x, y)
                     x += image.width + margin
                 }
