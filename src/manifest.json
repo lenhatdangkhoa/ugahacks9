@@ -1,25 +1,30 @@
 {
-    "testId": "1eccc11c-3bc6-41d0-b519-f31bed21ff7f",
-    "name": "Watermark Generator",
-    "version": "1.0.0",
-    "manifestVersion": 2,
-    "requirements": {
-        "apps": [
-            {
-                "name": "Express",
-                "apiVersion": 1
-            }
-        ],
-        "renditionPreview": true,
-        "experimentalApis": true
-    },
-    "entryPoints": [
-        {
-            "type": "panel",
-            "id": "panel1",
-            "main": "index.html"
-        }
+  "testId": "1eccc11c-3bc6-41d0-b519-f31bed21ff7f",
+  "name": "Watermarker",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "requirements": {
+    "apps": [
+      {
+        "name": "Express",
+        "apiVersion": 1
+      }
     ],
-    "permissions": { "sandbox": ["allow-popups-to-escape-sandbox", "allow-popups", "allow-downloads"]}
-
+    "renditionPreview": true,
+    "experimentalApis": true
+  },
+  "entryPoints": [
+    {
+      "type": "panel",
+      "id": "panel1",
+      "main": "index.html"
+    }
+  ],
+  "permissions": {
+    "sandbox": [
+      "allow-popups-to-escape-sandbox",
+      "allow-popups",
+      "allow-downloads"
+    ]
+  }
 }
