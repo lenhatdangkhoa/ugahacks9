@@ -1,16 +1,21 @@
-## About
+<p align="center">
+<img src= "https://raw.githubusercontent.com/lenhatdangkhoa/ugahacks9/main/src/transparent.png"
+     width="50%"
+     height="50%"
+     alt="Logo of Watermarker"
+     />
+  <h1 align ="center">
+  Making sure what's yours remains distinctly yours.
+</p>
+  </h1>
+  </p>
+<p align="center">
+Imagine protecting your content with a personalized watermark with the click of a button. Our Adobe Express add-on, Watermarker, generates and applies a watermark using your name and logo directly onto your current page. It doesn't matter if you're an amateur or professional. Watermarker will ensure that your content remains distinctly yours.
+  <br>
+  <br>
+ Add-on Coming Soon to Adobe Express.
+<h2></h2>
+</p>
 
-This project has been created with _@adobe/create-ccweb-add-on_. As an example, this Add-on demonstrates how to get started with Add-on development using React and JavaScript.
 
-## Tools
-
--   HTML
--   CSS
--   React
--   JavaScript
-
-## Setup
-
-1. To install the dependencies, run `npm install`.
-2. To build the application, run `npm run build`.
-3. To start the application, run `npm run start`.
+**Built with: HTML, CSS, React, JavaScript**
