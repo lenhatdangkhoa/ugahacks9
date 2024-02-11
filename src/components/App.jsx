@@ -44,23 +44,22 @@ const App = ({ addOnUISdk }) => {
         ctx.rotate(-30 * Math.PI / 180);
 
         if (image !== null) {
-            const max = 100
-            if (Math.min(image.width, image.height) > max) {
-                const imgCanvas = document.createElement("canvas")
-                const imgCtx = imgCanvas.getContext("2d")
+            const max = textSize + 80
+            console.log(max)
+            const imgCanvas = document.createElement("canvas")
+            const imgCtx = imgCanvas.getContext("2d")
 
-                const aspectRatio = image.width / image.height
-                if (image.width > image.height) {
-                    imgCanvas.width = max
-                    imgCanvas.height = max / aspectRatio
-                } else {
-                    imgCanvas.height = max
-                    imgCanvas.width = max * aspectRatio
-                }
-                imgCtx.drawImage(image, 0, 0, imgCanvas.width, imgCanvas.height)
-                image.src = imgCanvas.toDataURL()
-                await new Promise(res => setTimeout(res, 0))
+            const aspectRatio = image.width / image.height
+            if (image.width > image.height) {
+                imgCanvas.width = max
+                imgCanvas.height = max / aspectRatio
+            } else {
+                imgCanvas.height = max
+                imgCanvas.width = max * aspectRatio
             }
+            imgCtx.drawImage(image, 0, 0, imgCanvas.width, imgCanvas.height)
+            image.src = imgCanvas.toDataURL()
+            await new Promise(res => setTimeout(res, 0))
 
             let y = 0
             for (let i = 0; i < 50; i++) {
