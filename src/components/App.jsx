@@ -21,6 +21,7 @@ const App = ({ addOnUISdk }) => {
     const [image, setImage] = useState(null);
     const [width, setWidth] = useState(0)
     const [height, setHeight] = useState(0)
+    const [opacity, setOpacity] = useState(100)
 
     useEffect(() => {
         async function setDim() {
@@ -39,6 +40,7 @@ const App = ({ addOnUISdk }) => {
         canvas.height = height;
         ctx.fillStyle = "black";
         ctx.font = `${textSize.toString()}px Arial`
+        ctx.globalAlpha = opacity/100
         ctx.rotate(-30 * Math.PI / 180);
 
         if (image !== null) {
@@ -82,7 +84,7 @@ const App = ({ addOnUISdk }) => {
                     />
                 </div>
                 <div className="text-slider">
-                    <h1> Text Size</h1>
+                    <h1>Text Size</h1>
                     <h1 className="left"> {textSize}px</h1>
                 </div>
                 <Slider
@@ -94,6 +96,20 @@ const App = ({ addOnUISdk }) => {
                     }}
                     min={36}
                     max={150}
+                />
+                <div className="text-slider">
+                  <h1>Opacity</h1>
+                  <h1 className="left">{opacity} %</h1>
+                </div>
+                <Slider
+                    className="slider"
+                    defaultValue={opacity}
+                    onChange={(value) => setOpacity(value)}
+                    tooltip={{
+                        open: false,
+                    }}
+                    min={0}
+                    max={100}
                 />
                 <div>
                     <h1> Icon Upload </h1>

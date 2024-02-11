@@ -17,6 +17,14 @@ const App = ({ setImage }) => (
             action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
             listType="picture"
             maxCount={1}
+            beforeUpload={(img) => {
+                const width = img.width
+                const height = img.height
+                if (width > 150 || height > 150) {
+                    img.height = 144
+                    img.width = 144
+                }
+            }}
             onChange={e => {
                 const img = new Image()
                 img.src = URL.createObjectURL(e.file.originFileObj)
