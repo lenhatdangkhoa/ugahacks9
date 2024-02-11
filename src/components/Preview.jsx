@@ -24,7 +24,7 @@ export default function Preview() {
     },[image])
     return (
         <div>
-            <h1>This is a preview</h1> 
+            <h1>Page Preview</h1> 
             <img src={image} alt="Preview" id="previewImg"/>
             <div>
             </div>

@@ -1,5 +1,6 @@
 #previewImg {
-    width:50%;
+    margin-top: 10px;
     height: 50%;
+    width: auto;
     border: 1px solid;
 }
