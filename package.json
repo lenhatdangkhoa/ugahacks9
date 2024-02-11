@@ -19,6 +19,7 @@
         "@swc-react/button": "0.39.4",
         "@swc-react/theme": "0.39.4",
         "antd": "^5.14.0",
+        "antd-img-crop": "^4.21.0",
         "react": "18.2.0",
         "react-dom": "18.2.0"
     },
