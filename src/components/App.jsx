@@ -41,12 +41,28 @@ const App = ({ addOnUISdk }) => {
         ctx.font = `${textSize.toString()}px Arial`
         ctx.rotate(-30 * Math.PI / 180);
 
-        let str = ""
-        for (let i = 0; i < 20; i++) {
-            str += `${watermark}      `
-        }
-        for (let i = 0; i < 100; i++) {
-            ctx.fillText(str, -width / 2, i * (textSize + 50));
+        if (image !== null) {
+            let y = 0
+            for (let i = 0; i < 50; i++) {
+                let x = -width / 2
+                let margin = 50;
+                for (let j = 0; j < 50; j++) {
+                    ctx.fillText(watermark, x, y + image.naturalHeight / 2)
+                    x += textSize * watermark.length / 1.5
+                    ctx.drawImage(image, x, y)
+                    x += image.naturalWidth + margin
+                }
+                y += image.naturalHeight + margin
+            }
+        } else {
+            let str = ""
+            for (let i = 0; i < 20; i++) {
+                str += `${watermark}      `
+            }
+
+            for (let i = 0; i < 100; i++) {
+                ctx.fillText(str, -width / 2, i * (textSize + 50));
+            }
         }
 
         canvas.toBlob(blob => addOnUISdk.app.document.addImage(blob))
@@ -79,7 +95,7 @@ const App = ({ addOnUISdk }) => {
                 />
                 <div>
                     <h1> Icon Upload </h1>
-                    <UploadButton />
+                    <UploadButton setImage={setImage} />
                 </div>
                 <Preview />
                 <div>
