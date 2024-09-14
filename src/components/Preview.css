@@ -1,6 +1,16 @@
-#previewImg {
-    margin-top: 10px;
-    height: 50%;
-    width: auto;
-    border: 1px solid;
+.preview-container {
+    margin: 0 0 20px 0; /* Remove top margin, keep bottom margin */
+    text-align: left; /* Center the text */
 }
+
+.preview-container h1 {
+    margin-bottom: 20px; /* Add bottom margin to the heading */
+}
+
+#previewImg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #ccc;
+}
+
