@@ -16,6 +16,7 @@ const App = ({ addOnUISdk }) => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [opacity, setOpacity] = useState(100);
+  const [rotation, setRotation] = useState(-30);
 
   useEffect(() => {
     async function setDim() {
@@ -34,49 +35,28 @@ const App = ({ addOnUISdk }) => {
     const ctx = canvas.getContext("2d");
     canvas.width = width;
     canvas.height = height;
+
     ctx.fillStyle = "black";
     ctx.font = `${textSize}px Arial`;
     ctx.globalAlpha = opacity / 100;
-    ctx.rotate((-30 * Math.PI) / 180);
 
-    if (image !== null) {
-      const max = textSize + 80;
-      const imgCanvas = document.createElement("canvas");
-      const imgCtx = imgCanvas.getContext("2d");
+    const textWidth = ctx.measureText(watermark).width;
+    const tileSize = Math.max(textWidth, textSize) + 40;
 
-      const aspectRatio = image.width / image.height;
-      if (image.width > image.height) {
-        imgCanvas.width = max;
-        imgCanvas.height = max / aspectRatio;
-      } else {
-        imgCanvas.height = max;
-        imgCanvas.width = max * aspectRatio;
-      }
-      imgCtx.drawImage(image, 0, 0, imgCanvas.width, imgCanvas.height);
-      image.src = imgCanvas.toDataURL();
-      await new Promise((res) => setTimeout(res, 0));
+    for (let y = -tileSize / 2; y < canvas.height + tileSize; y += tileSize) {
+      for (let x = -tileSize / 2; x < canvas.width + tileSize; x += tileSize) {
+        ctx.save();
+        ctx.translate(x + tileSize / 2, y + tileSize / 2);
+        ctx.rotate((rotation * Math.PI) / 180);
+        ctx.translate(-(x + tileSize / 2), -(y + tileSize / 2));
 
-      let y = 0;
-      const textWidth = ctx.measureText(watermark).width;
-      for (let i = 0; i < 50; i++) {
-        let x = -width / 2;
-        const margin = 50;
-        for (let j = 0; j < 50; j++) {
-          ctx.fillText(watermark, x, y + image.height / 2 + textSize / 2);
-          x += textWidth + margin;
-          ctx.drawImage(image, x, y);
-          x += image.width + margin;
+        ctx.fillText(watermark, x, y);
+
+        if (image) {
+          const iconSize = textSize * 1.5;
+          ctx.drawImage(image, x + textWidth + 10, y - textSize / 2, iconSize, iconSize);
         }
-        y += image.height + margin;
-      }
-    } else {
-      let str = "";
-      for (let i = 0; i < 20; i++) {
-        str += `${watermark}      `;
-      }
-
-      for (let i = 0; i < 100; i++) {
-        ctx.fillText(str, -width / 2, i * (textSize + 50));
+        ctx.restore();
       }
     }
 
@@ -86,7 +66,15 @@ const App = ({ addOnUISdk }) => {
   return (
     <Theme theme="express" scale="medium" color="light">
       <div className="container">
-        <Preview />
+        <Preview
+          watermark={watermark}
+          textSize={textSize}
+          image={image}
+          opacity={opacity}
+          rotation={rotation}
+          width={width}
+          height={height}
+        />
         <Collapse expandIconPosition="right">
           <Collapse.Panel header="Text Options" key="1">
             <div className="option-item">
@@ -131,6 +119,23 @@ const App = ({ addOnUISdk }) => {
               tooltip={{ open: false }}
               min={0}
               max={100}
+            />
+          </div>
+        </div>
+
+        <div className="rotation-section">
+          <div className="text-slider">
+            <h1>Rotation</h1>
+            <h1>{rotation}°</h1>
+          </div>
+          <div className="rotation-slider">
+            <Slider
+              className="slider"
+              defaultValue={rotation}
+              onChange={(value) => setRotation(value)}
+              tooltip={{ open: false }}
+              min={-90}
+              max={90}
             />
           </div>
         </div>

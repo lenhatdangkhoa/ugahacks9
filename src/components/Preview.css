@@ -1,10 +1,10 @@
 .preview-container {
-    margin: 0 0 20px 0; /* Remove top margin, keep bottom margin */
-    text-align: left; /* Center the text */
+    margin: 0 0 0 0;
+    text-align: left;
 }
 
 .preview-container h1 {
-    margin-bottom: 20px; /* Add bottom margin to the heading */
+    margin-bottom: 20px;
 }
 
 #previewImg {
@@ -13,4 +13,3 @@
     display: block;
     border: 1px solid #ccc;
 }
-

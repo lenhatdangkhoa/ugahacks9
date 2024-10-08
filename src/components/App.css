@@ -47,3 +47,40 @@ input {
   margin-top: 5px;
 }
 
+.rotation-section {
+  margin-top: 20px;
+}
+
+.rotation-slider {
+  margin-top: 5px;
+}
+
+.preview-container {
+  width: 100%;
+  max-width: 250px;
+  padding: 0;
+  margin: 0 auto 20px auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+.preview-container h1 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#previewCanvas {
+  width: 100%;
+  height: auto;
+  max-width: 240px;
+  max-height: 240px;
+  border: 1px solid #ccc;
+  display: block;
+  margin: 0 auto;
+}
+
+button {
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+}
