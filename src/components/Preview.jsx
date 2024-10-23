@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import "./Preview.css";
 
-export default function Preview({ watermark, textSize, image, opacity, rotation, width, height, selectedFont }) {
+export default function Preview({ watermark, textSize, image, opacity, rotation, width, height, selectedFont, fontColour}) {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -26,13 +26,14 @@ export default function Preview({ watermark, textSize, image, opacity, rotation,
         const scaleY = previewHeight / height;
         ctx.scale(scaleX, scaleY);
 
-        ctx.fillStyle = "black";
+        //ctx.fillStyle = "black";
+        ctx.fillStyle = fontColour;
         ctx.font = `${textSize}px ${selectedFont}`;
         ctx.globalAlpha = opacity / 100;
 
         const textWidth = ctx.measureText(watermark).width;
         const tileSize = Math.max(textWidth, textSize) + 40;
-
+        
         // Match the same pattern as handleAddToPage
         for (let y = -tileSize / 2; y < height + tileSize; y += tileSize) {
             for (let x = -tileSize / 2; x < width + tileSize; x += tileSize) {
@@ -42,7 +43,6 @@ export default function Preview({ watermark, textSize, image, opacity, rotation,
                 ctx.translate(-(x + tileSize / 2), -(y + tileSize / 2));
 
                 ctx.fillText(watermark, x, y);
-
                 if (image) {
                     const iconSize = textSize * 1.5;
                     ctx.drawImage(image, x + textWidth + 10, y - textSize / 2, iconSize, iconSize);
@@ -50,7 +50,7 @@ export default function Preview({ watermark, textSize, image, opacity, rotation,
                 ctx.restore();
             }
         }
-    }, [watermark, textSize, image, opacity, rotation, width, height, selectedFont]);
+    }, [watermark, textSize, image, opacity, rotation, width, height, selectedFont, fontColour]);
 
     return (
         <div className="preview-container">

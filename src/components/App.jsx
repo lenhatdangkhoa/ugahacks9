@@ -85,6 +85,7 @@ const App = ({ addOnUISdk }) => {
           width={width}
           height={height}
           selectedFont={selectedFont}
+          fontColour={fontColour}
         />
         <Collapse expandIconPosition="right">
           <Collapse.Panel header="Text Options" key="1">
