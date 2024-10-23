@@ -26,7 +26,6 @@ export default function Preview({ watermark, textSize, image, opacity, rotation,
         const scaleY = previewHeight / height;
         ctx.scale(scaleX, scaleY);
 
-        //ctx.fillStyle = "black";
         ctx.fillStyle = fontColour;
         ctx.font = `${textSize}px ${selectedFont}`;
         ctx.globalAlpha = opacity / 100;
