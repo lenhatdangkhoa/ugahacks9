@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Theme } from "@swc-react/theme";
-import { Slider, Collapse } from "antd";
+import { Slider, Collapse, Select } from "antd";
 import "@spectrum-web-components/theme/express/scale-medium.js";
 import "@spectrum-web-components/theme/express/theme-light.js";
 import Preview from "./Preview.jsx";
@@ -17,6 +17,7 @@ const App = ({ addOnUISdk }) => {
   const [height, setHeight] = useState(0);
   const [opacity, setOpacity] = useState(100);
   const [rotation, setRotation] = useState(-30);
+  const [selectedFont, setSelectedFont] = useState("Arial");
 
   useEffect(() => {
     async function setDim() {
@@ -37,7 +38,7 @@ const App = ({ addOnUISdk }) => {
     canvas.height = height;
 
     ctx.fillStyle = "black";
-    ctx.font = `${textSize}px Arial`;
+    ctx.font = `${textSize}px ${selectedFont}`; // Use the selected font here
     ctx.globalAlpha = opacity / 100;
 
     const textWidth = ctx.measureText(watermark).width;
@@ -74,6 +75,7 @@ const App = ({ addOnUISdk }) => {
           rotation={rotation}
           width={width}
           height={height}
+          selectedFont={selectedFont}
         />
         <Collapse expandIconPosition="right">
           <Collapse.Panel header="Text Options" key="1">
@@ -97,6 +99,28 @@ const App = ({ addOnUISdk }) => {
               min={36}
               max={150}
             />
+            <div className="option-item">
+              <h3>Font</h3>
+              <Select
+                style={{ width: '100%' }}
+                value={selectedFont}
+                onChange={(value) => setSelectedFont(value)}
+                options={[
+                  { value: 'Arial', label: 'Arial' },
+                  { value: 'Helvetica', label: 'Helvetica' },
+                  { value: 'Times New Roman', label: 'Times New Roman' },
+                  { value: 'Courier', label: 'Courier' },
+                  { value: 'Verdana', label: 'Verdana' },
+                  { value: 'Georgia', label: 'Georgia' },
+                  { value: 'Palatino', label: 'Palatino' },
+                  { value: 'Garamond', label: 'Garamond' },
+                  { value: 'Bookman', label: 'Bookman' },
+                  { value: 'Comic Sans MS', label: 'Comic Sans MS' },
+                  { value: 'Trebuchet MS', label: 'Trebuchet MS' },
+                  { value: 'Arial Black', label: 'Arial Black' },
+                ]}
+              />
+            </div>
           </Collapse.Panel>
           <Collapse.Panel header="Image Options" key="2">
             <div className="option-item">
@@ -149,4 +173,3 @@ const App = ({ addOnUISdk }) => {
 };
 
 export default App;
-
