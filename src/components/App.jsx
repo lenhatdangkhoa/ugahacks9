@@ -15,9 +15,10 @@ const App = ({ addOnUISdk }) => {
   const [image, setImage] = useState(null);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
-  const [opacity, setOpacity] = useState(100);
+  const [opacity, setOpacity] = useState(35);
   const [rotation, setRotation] = useState(-30);
   const [selectedFont, setSelectedFont] = useState("Arial");
+  const [fontColour, setFontColour] = useState("#808080");
 
   useEffect(() => {
     async function setDim() {
@@ -31,14 +32,22 @@ const App = ({ addOnUISdk }) => {
     setDim();
   }, []);
 
+  const handleFontColourChange = (value) => {
+    if (!value.startsWith("#")) {
+      setFontColour(`#${value}`);
+    } else {
+      setFontColour(value);
+    }
+  };
+
   async function handleAddToPage() {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     canvas.width = width;
     canvas.height = height;
 
-    ctx.fillStyle = "black";
-    ctx.font = `${textSize}px ${selectedFont}`; // Use the selected font here
+    ctx.fillStyle = fontColour;
+    ctx.font = `${textSize}px ${selectedFont}`;
     ctx.globalAlpha = opacity / 100;
 
     const textWidth = ctx.measureText(watermark).width;
@@ -99,25 +108,43 @@ const App = ({ addOnUISdk }) => {
               min={36}
               max={150}
             />
+
+            <div className="option-item text-slider" style={{ marginTop: "10px", marginBottom: "10px" }}>
+              <h3>Font Colour</h3>
+              <input
+                type="text"
+                value={fontColour}
+                onChange={({ target: { value } }) => handleFontColourChange(value)}
+                style={{ marginLeft: "10px", width: "80px" }}
+              />
+            </div>
+            <div style={{ marginTop: "10px", marginBottom: "10px" }}>
+              <input
+                type="color"
+                value={fontColour}
+                onChange={({ target: { value } }) => setFontColour(value)}
+              />
+            </div>
+
             <div className="option-item">
               <h3>Font</h3>
               <Select
-                style={{ width: '100%' }}
+                style={{ width: "100%" }}
                 value={selectedFont}
                 onChange={(value) => setSelectedFont(value)}
                 options={[
-                  { value: 'Arial', label: 'Arial' },
-                  { value: 'Helvetica', label: 'Helvetica' },
-                  { value: 'Times New Roman', label: 'Times New Roman' },
-                  { value: 'Courier', label: 'Courier' },
-                  { value: 'Verdana', label: 'Verdana' },
-                  { value: 'Georgia', label: 'Georgia' },
-                  { value: 'Palatino', label: 'Palatino' },
-                  { value: 'Garamond', label: 'Garamond' },
-                  { value: 'Bookman', label: 'Bookman' },
-                  { value: 'Comic Sans MS', label: 'Comic Sans MS' },
-                  { value: 'Trebuchet MS', label: 'Trebuchet MS' },
-                  { value: 'Arial Black', label: 'Arial Black' },
+                  { value: "Arial", label: "Arial" },
+                  { value: "Helvetica", label: "Helvetica" },
+                  { value: "Times New Roman", label: "Times New Roman" },
+                  { value: "Courier", label: "Courier" },
+                  { value: "Verdana", label: "Verdana" },
+                  { value: "Georgia", label: "Georgia" },
+                  { value: "Palatino", label: "Palatino" },
+                  { value: "Garamond", label: "Garamond" },
+                  { value: "Bookman", label: "Bookman" },
+                  { value: "Comic Sans MS", label: "Comic Sans MS" },
+                  { value: "Trebuchet MS", label: "Trebuchet MS" },
+                  { value: "Arial Black", label: "Arial Black" },
                 ]}
               />
             </div>
