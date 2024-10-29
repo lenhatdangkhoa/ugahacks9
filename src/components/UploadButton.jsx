@@ -1,58 +1,70 @@
-import React from 'react';
-import { UploadOutlined } from '@ant-design/icons';
+import React, { useState, useEffect } from 'react';
+import { UploadOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Button, Space, Upload } from 'antd';
 
-const App = ({ setImage }) => (
+const App = ({ setImage }) => {
+    const [fileInfo, setFileInfo] = useState(null);
 
-    /**
-     * Upload Image Button
-     * Limited to only one input
-     */
-    <Space
-        direction="vertical"
-        style={{
-            width: '100%',
-        }}
-        size="large"
-    >
-         
-         <div style={{ textAlign: 'center', marginTop: '20px' }}>
-            <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                    const file = e.target.files[0];
+    useEffect(() => {
+        if (fileInfo) {
+            const img = new Image();
+            img.src = fileInfo.url;
+            setImage(img);
+        } else {
+            setImage(null);
+        }
+    }, [fileInfo, setImage]);
+
+    const handleRemoveImage = () => {
+        setFileInfo(null);
+    };
+
+    return (
+        <Space
+            direction="vertical"
+            style={{
+                width: '100%',
+            }}
+            size="large"
+        >
+            <Upload
+                maxCount={1}
+                showUploadList={false} 
+                beforeUpload={() => false}
+                onChange={(info) => {
+                    const file = info.fileList[0]?.originFileObj;
                     if (file) {
-                        const img = new Image();
-                        img.src = URL.createObjectURL(file);
-                        setImage(img);
+                        const imgURL = URL.createObjectURL(file);
+                        setFileInfo({
+                            name: file.name,
+                            url: imgURL
+                        });
                     }
                 }}
-                style={{ display: 'none'}}
-                id="fileInput"
-            />
-            <button onClick={() => document.getElementById('fileInput').click()}>
-                Upload (Max: 1)
-            </button>
-    
-        </div>    
-           
-    <Button icon={<UploadOutlined />}>Upload (Max: 1)</Button>
-    </Space>
-);
+            >
+                <Button icon={<UploadOutlined />}>Upload (Max: 1)</Button>
+            </Upload>
+
+            {fileInfo && (
+                <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                    <img
+                        width={100}
+                        src={fileInfo.url}
+                        alt={fileInfo.name}
+                        style={{ borderRadius: '8px', border: '1px solid #e8e8e8' }}
+                    />
+                    <p>{fileInfo.name}</p>
+                    <Button
+                        icon={<DeleteOutlined />}
+                        onClick={handleRemoveImage}
+                        style={{ marginTop: '10px' }}
+                    >
+                        Remove Image
+                    </Button>
+                </div>
+            )}
+        </Space>
+    );
+};
+
 export default App;
-
-/**
- * <Upload
-            action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-            listType="picture"
-            maxCount={1}
-            onChange={e => {
-                const img = new Image()
-                img.src = URL.createObjectURL(e.file.originFileObj)
-                setImage(img)
-            }}
-        >
-                </Upload>
-
- */
