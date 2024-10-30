@@ -18,7 +18,7 @@
 <h2>Version 1.1 Changelog</h2>
 <ul>
   <li>Added color selection for text</li>
-  <li>Introduced font color</li>
+  <li>Introduced font selection</li>
   <li>Added rotation for text</li>
   <li>UI improvements with updated dropdowns and overall design enhancements</li>
   <li>Sent code to Adobe for review and release</li>
