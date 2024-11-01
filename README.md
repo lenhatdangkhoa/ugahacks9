@@ -12,9 +12,8 @@
   <br><br>
   Built With: HTML, CSS, React, JavaScript, Ant Design, add-on UI SDK
   <br><br>
-  Winners of <a href="https://developer.adobe.com/express/hackathons/">Adobe Express for Hackathons</a>
 </p>
-
-<h3 align="center">Coming Soon to Adobe Express</h3>
+<h3 align="center">Winners of <a href="https://developer.adobe.com/express/hackathons/">Adobe Express for Hackathons</a></h3>
+<p align="center">Coming soon to Adobe Express</p>
 <h2>Contributors</h2>
 <p>Khoa Le, Steven Tran, Darren Thammavong, Peter Wang</p>
