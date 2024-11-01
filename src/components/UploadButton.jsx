@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { UploadOutlined, DeleteOutlined } from '@ant-design/icons';
-import { Button, Space, Upload } from 'antd';
+import { Button, Space, Upload, message } from 'antd';
 
 const App = ({ setImage }) => {
     const [fileInfo, setFileInfo] = useState(null);
@@ -19,6 +19,14 @@ const App = ({ setImage }) => {
         setFileInfo(null);
     };
 
+    const beforeUpload = (file) => {
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error('You can only upload JPG/PNG files!');
+        }
+        return isJpgOrPng;
+    };
+
     return (
         <Space
             direction="vertical"
@@ -29,16 +37,18 @@ const App = ({ setImage }) => {
         >
             <Upload
                 maxCount={1}
-                showUploadList={false} 
-                beforeUpload={() => false}
+                showUploadList={false}
+                beforeUpload={beforeUpload}
                 onChange={(info) => {
                     const file = info.fileList[0]?.originFileObj;
-                    if (file) {
+                    if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
                         const imgURL = URL.createObjectURL(file);
                         setFileInfo({
                             name: file.name,
                             url: imgURL
                         });
+                    } else {
+                        setFileInfo(null);
                     }
                 }}
             >
