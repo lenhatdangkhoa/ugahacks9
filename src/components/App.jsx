@@ -106,7 +106,7 @@ const App = ({ addOnUISdk }) => {
               defaultValue={textSize}
               onChange={(value) => setTextSize(value)}
               tooltip={{ open: false }}
-              min={36}
+              min={1}
               max={150}
             />
 
