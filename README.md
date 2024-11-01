@@ -13,29 +13,6 @@
   Built With: HTML, CSS, React, JavaScript, Ant Design, add-on UI SDK
 </p>
 
-<h3 align="center">Coming Soon to Adobe Express - Version 1.1 Release</h3>
-
-<h2>Version 1.1 Changelog</h2>
-<ul>
-  <li>Added color selection for text</li>
-  <li>Introduced font selection</li>
-  <li>Added rotation for text</li>
-  <li>UI improvements with updated dropdowns and overall design enhancements</li>
-  <li>Sent code to Adobe for review and release</li>
-</ul>
-<h2>Bug Fixes</h2>
-<ul>
-  <li>Fixed known issue where preview did not display until applying the watermark</li>
-</ul>
-
-<h2>Version 1.0 Changelog</h2>
-<ul>
-  <li>Text Input for watermark text</li>
-  <li>Image Input for logos</li>
-  <li>Text Size Slider</li>
-  <li>Opacity Slider</li>
-  <li>Real-time Preview</li>
-</ul>
-
+<h3 align="center">Coming Soon to Adobe Express</h3>
 <h2>Contributors</h2>
 <p>Khoa Le, Steven Tran, Darren Thammavong, Peter Wang</p>
