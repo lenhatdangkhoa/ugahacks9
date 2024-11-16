@@ -8,7 +8,7 @@
 <h1 align="center">Making sure what's yours remains distinctly yours.</h1>
 
 <p align="center">
-  Imagine protecting your content with a personalized watermark with the click of a button. Our Adobe Express add-on, <strong>Watermarker</strong>, generates and applies a watermark using your name and logo directly onto your current page. Whether you're an amateur or professional, Watermarker will ensure that your content remains distinctly yours. Winners of <a href ="https://developer.adobe.com/express/hackathonss#previous-winning-submissions"> Adobe Express for Hackathons </a>.
+  Imagine protecting your content with a personalized watermark with the click of a button. Our Adobe Express add-on, <strong>Watermarker</strong>, generates and applies a watermark using your name and logo directly onto your current page. Whether you're an amateur or professional, Watermarker will ensure that your content remains distinctly yours. Winners of <a href ="https://developer.adobe.com/express/hackathons#previous-winning-submissions"> Adobe Express for Hackathons </a>.
   <br><br>
   Built With: HTML, CSS, React, JavaScript, Ant Design, add-on UI SDK
   <br><br>
